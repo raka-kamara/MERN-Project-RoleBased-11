@@ -1,11 +1,14 @@
 import {
   FaAd,
+  FaBook,
   FaCalendar,
   FaEnvelope,
   FaHome,
   FaList,
   FaSearch,
   FaShoppingCart,
+  FaUsers,
+  FaUtensils,
 } from "react-icons/fa";
 import { NavLink, Outlet } from "react-router-dom";
 import { useState } from "react";
@@ -73,11 +76,59 @@ const Dashboard = () => {
               }
               onClick={handleLinkClick}
             >
-              <FaCalendar className="text-xl mr-3" />
+              <FaUtensils className="text-xl mr-3" />
               Add Items
             </NavLink>
           </li>
+         
           <li>
+            <NavLink
+              to="/dashboard/manageItems"
+              className={({ isActive }) =>
+                isActive
+                  ? "flex items-center p-2 bg-yellow-500 text-white rounded-lg transition"
+                  : "flex items-center p-2 hover:bg-yellow-300 rounded-lg transition"
+              }
+              onClick={handleLinkClick}
+            >
+              <FaList className="text-xl mr-3" />
+             Manage Items
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/dashboard/manageBookings"
+              className={({ isActive }) =>
+                isActive
+                  ? "flex items-center p-2 bg-yellow-500 text-white rounded-lg transition"
+                  : "flex items-center p-2 hover:bg-yellow-300 rounded-lg transition"
+              }
+              onClick={handleLinkClick}
+            >
+              <FaBook className="text-xl mr-3" />
+              Manage Bookings
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/dashboard/allUsers"
+              className={({ isActive }) =>
+                isActive
+                  ? "flex items-center p-2 bg-yellow-500 text-white rounded-lg transition"
+                  : "flex items-center p-2 hover:bg-yellow-300 rounded-lg transition"
+              }
+              onClick={handleLinkClick}
+            >
+              <FaUsers className="text-xl mr-3" />
+             All Users
+            </NavLink>
+          </li>
+          
+            </>
+            :
+            <>
+           {/* Not Admin */}
+           <li>
             <NavLink
               to="/dashboard/cart"
               className={({ isActive }) =>
@@ -93,7 +144,7 @@ const Dashboard = () => {
           </li>
           <li>
             <NavLink
-              to="/dashboard/manageItems"
+              to="/menu"
               className={({ isActive }) =>
                 isActive
                   ? "flex items-center p-2 bg-yellow-500 text-white rounded-lg transition"
@@ -101,13 +152,13 @@ const Dashboard = () => {
               }
               onClick={handleLinkClick}
             >
-              <FaAd className="text-xl mr-3" />
-             Manage Items
+              <FaSearch className="text-xl mr-3" />
+              Menu
             </NavLink>
           </li>
           <li>
             <NavLink
-              to="/dashboard/bookings"
+              to="/contact"
               className={({ isActive }) =>
                 isActive
                   ? "flex items-center p-2 bg-yellow-500 text-white rounded-lg transition"
@@ -115,16 +166,15 @@ const Dashboard = () => {
               }
               onClick={handleLinkClick}
             >
-              <FaList className="text-xl mr-3" />
-              My Bookings
+              <FaEnvelope className="text-xl mr-3" />
+              Contact
             </NavLink>
           </li>
-          
             </>
-            :
-            <>
-            {/*Shared Navlinks  */}
-          <div className="divider my-4" />
+          }
+
+           {/*Shared Navlinks  */}
+           <div className="divider my-4" />
           <li>
             <NavLink
               to="/"
@@ -167,8 +217,6 @@ const Dashboard = () => {
               Contact
             </NavLink>
           </li>
-            </>
-          }
           
           
         </ul>
