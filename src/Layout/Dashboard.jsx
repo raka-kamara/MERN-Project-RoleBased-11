@@ -13,12 +13,13 @@ import {
 import { NavLink, Outlet } from "react-router-dom";
 import { useState } from "react";
 import useCart from "../hooks/useCart";
+import useAdmin from "../hooks/useAdmin";
 
 const Dashboard = () => {
   const [cart] = useCart();
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
-  const isAdmin = true;
+  const [isAdmin] = useAdmin();
 
   const handleLinkClick = () => {
     setSidebarOpen(false); // Close sidebar on link click

@@ -2,6 +2,7 @@ import { FaTrashAlt } from "react-icons/fa";
 import useCart from "../../hooks/useCart";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
+import { Link } from "react-router-dom";
 
 const Cart = () => {
   const [cart, refetch] = useCart();
@@ -42,7 +43,7 @@ const Cart = () => {
             Welcome to your Dashboard
           </h2>
           <p className="text-gray-600">
-            Manage your reservations, bookings, and reviews seamlessly.
+            Manage your orders, and reviews seamlessly.
           </p>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
@@ -55,7 +56,10 @@ const Cart = () => {
             <p className="text-2xl">{totalPrice}</p>
           </div>
           <div className="flex items-center">
-            <button className="btn btn-primary">Pay</button>
+          {
+            cart.length?  <Link to="/dashboard/payment"> <button disabled={!cart.length} className="btn btn-primary">Pay</button></Link> :
+            <button disabled={!cart.length} className="btn btn-primary">Pay</button>
+          }
           </div>
         </div>{" "}
       </div>

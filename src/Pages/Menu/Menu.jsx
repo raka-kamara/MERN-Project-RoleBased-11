@@ -2,6 +2,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import menubg from '../../assets/menu/menubg.jpg';
 import dessertImg from '../../assets/home/mooncake.jpg';
+import maintImg from '../../assets/home/burger.jpg';
 import pizzaImg from '../../assets/home/Pizza.jpg';
 import saladImg from '../../assets/category/salad.jpg';
 import soupImg from '../../assets/category/soup.jpg';
@@ -12,6 +13,7 @@ import SectionTitle from '../../components/SectionTitle';
 
 const Menu = () => {
     const [menu] = useMenu(); // Call the hook as a function
+    const main = menu.filter(item => item.category === 'main');
     const dessert = menu.filter(item => item.category === 'dessert');
     const soup = menu.filter(item => item.category === 'soup');
     const salad = menu.filter(item => item.category === 'salad');
@@ -29,6 +31,9 @@ const Menu = () => {
             {/* Offered menu items */}
             <MenuCategory items={offered} />
 
+            {/* Dessert menu items */}
+            
+            <MenuCategory items={main} title="Main" img={maintImg} design={{height: 'h-[500px]', opacity: 'opacity-90'}} description= "Select from our diverse food collections. Enjoy your prefered one. Our chefs are working hard to let you have the best food in town."/>
             {/* Dessert menu items */}
             
             <MenuCategory items={dessert} title="Dessert" img={dessertImg} design={{height: 'h-[500px]', opacity: 'opacity-90'}} description= "Select from our diverse dessert collections. Enjoy your prefered one. Our chefs are working hard to let you have the best food in town."/>
