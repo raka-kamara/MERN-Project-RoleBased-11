@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
-import { FaShoppingCart } from "react-icons/fa";
-import useCart from "../../hooks/useCart";
+import useAdmin from "../../hooks/useAdmin";
+
 
 const Navbar = () => {
   const { user, logOut } = useAuth();
-  const [cart] = useCart();
+  const [isAdmin] = useAdmin();
   const handleLogOut = () => {
     logOut()
       .then(() => {})
@@ -22,14 +22,18 @@ const Navbar = () => {
       <li>
         <Link to="/order/Main">Order Food</Link>
       </li>
-      <li>
-        <Link to="/dashboard/cart">
-          <button className="flex">
-            <FaShoppingCart className=""></FaShoppingCart>
-            <span className="">+{cart.length}</span>
-          </button>
+      {
+        user && isAdmin && <li>
+        <Link to="/dashboard/AdminHome">Dashboard
         </Link>
       </li>
+      }
+      {
+        user && !isAdmin && <li>
+        <Link to="/dashboard/userHome">Dashboard
+        </Link>
+      </li>
+      }
     </>
   );
   return (
@@ -55,7 +59,7 @@ const Navbar = () => {
             </label>
             <ul
               tabIndex={0}
-              className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+              className="menu menu-compact dropdown-content mt-3 p-2 shadow rounded-box w-52"
             >
               {navOptions}
             </ul>

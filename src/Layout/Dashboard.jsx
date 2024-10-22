@@ -1,15 +1,4 @@
-import {
-  FaAd,
-  FaBook,
-  FaCalendar,
-  FaEnvelope,
-  FaHome,
-  FaList,
-  FaSearch,
-  FaShoppingCart,
-  FaUsers,
-  FaUtensils,
-} from "react-icons/fa";
+import { FaAd, FaBook, FaCalendar, FaEnvelope, FaHome, FaList, FaSearch, FaShoppingCart, FaStripe, FaUsers, FaUtensils, FaSmile, FaStar } from "react-icons/fa";
 import { NavLink, Outlet } from "react-router-dom";
 import { useState } from "react";
 import useCart from "../hooks/useCart";
@@ -18,7 +7,6 @@ import useAdmin from "../hooks/useAdmin";
 const Dashboard = () => {
   const [cart] = useCart();
   const [sidebarOpen, setSidebarOpen] = useState(false);
-
   const [isAdmin] = useAdmin();
 
   const handleLinkClick = () => {
@@ -51,131 +39,130 @@ const Dashboard = () => {
       >
         <h1 className="text-3xl font-semibold text-center text-gray-800 mb-6">Dashboard</h1>
         <ul className="space-y-4">
-          {
-            isAdmin ? <>
-            <li>
-            <NavLink
-              to="/dashboard/adminHome"
-              className={({ isActive }) =>
-                isActive
-                  ? "flex items-center p-2 bg-yellow-500 text-white rounded-lg transition"
-                  : "flex items-center p-2 hover:bg-yellow-300 rounded-lg transition"
-              }
-              onClick={handleLinkClick} // Close sidebar when clicking a link
-            >
-              <FaHome className="text-xl mr-3" />
-              Admin Home
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/dashboard/addItems"
-              className={({ isActive }) =>
-                isActive
-                  ? "flex items-center p-2 bg-yellow-500 text-white rounded-lg transition"
-                  : "flex items-center p-2 hover:bg-yellow-300 rounded-lg transition"
-              }
-              onClick={handleLinkClick}
-            >
-              <FaUtensils className="text-xl mr-3" />
-              Add Items
-            </NavLink>
-          </li>
-         
-          <li>
-            <NavLink
-              to="/dashboard/manageItems"
-              className={({ isActive }) =>
-                isActive
-                  ? "flex items-center p-2 bg-yellow-500 text-white rounded-lg transition"
-                  : "flex items-center p-2 hover:bg-yellow-300 rounded-lg transition"
-              }
-              onClick={handleLinkClick}
-            >
-              <FaList className="text-xl mr-3" />
-             Manage Items
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/dashboard/manageBookings"
-              className={({ isActive }) =>
-                isActive
-                  ? "flex items-center p-2 bg-yellow-500 text-white rounded-lg transition"
-                  : "flex items-center p-2 hover:bg-yellow-300 rounded-lg transition"
-              }
-              onClick={handleLinkClick}
-            >
-              <FaBook className="text-xl mr-3" />
-              Manage Bookings
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/dashboard/allUsers"
-              className={({ isActive }) =>
-                isActive
-                  ? "flex items-center p-2 bg-yellow-500 text-white rounded-lg transition"
-                  : "flex items-center p-2 hover:bg-yellow-300 rounded-lg transition"
-              }
-              onClick={handleLinkClick}
-            >
-              <FaUsers className="text-xl mr-3" />
-             All Users
-            </NavLink>
-          </li>
-          
-            </>
-            :
+          {isAdmin ? (
             <>
-           {/* Not Admin */}
-           <li>
-            <NavLink
-              to="/dashboard/cart"
-              className={({ isActive }) =>
-                isActive
-                  ? "flex items-center p-2 bg-yellow-500 text-white rounded-lg transition"
-                  : "flex items-center p-2 hover:bg-yellow-300 rounded-lg transition"
-              }
-              onClick={handleLinkClick}
-            >
-              <FaShoppingCart className="text-xl mr-3" />
-              My Cart ({cart.length})
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/menu"
-              className={({ isActive }) =>
-                isActive
-                  ? "flex items-center p-2 bg-yellow-500 text-white rounded-lg transition"
-                  : "flex items-center p-2 hover:bg-yellow-300 rounded-lg transition"
-              }
-              onClick={handleLinkClick}
-            >
-              <FaSearch className="text-xl mr-3" />
-              Menu
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/contact"
-              className={({ isActive }) =>
-                isActive
-                  ? "flex items-center p-2 bg-yellow-500 text-white rounded-lg transition"
-                  : "flex items-center p-2 hover:bg-yellow-300 rounded-lg transition"
-              }
-              onClick={handleLinkClick}
-            >
-              <FaEnvelope className="text-xl mr-3" />
-              Contact
-            </NavLink>
-          </li>
+              <li>
+                <NavLink
+                  to="/dashboard/AdminHome"
+                  className={({ isActive }) =>
+                    isActive
+                      ? "flex items-center p-2 bg-yellow-500 text-white rounded-lg transition"
+                      : "flex items-center p-2 hover:bg-yellow-300 rounded-lg transition"
+                  }
+                  onClick={handleLinkClick}
+                >
+                  <FaHome className="text-xl mr-3" />
+                  Admin Home
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/dashboard/addItems"
+                  className={({ isActive }) =>
+                    isActive
+                      ? "flex items-center p-2 bg-yellow-500 text-white rounded-lg transition"
+                      : "flex items-center p-2 hover:bg-yellow-300 rounded-lg transition"
+                  }
+                  onClick={handleLinkClick}
+                >
+                  <FaUtensils className="text-xl mr-3" />
+                  Add Items
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/dashboard/manageItems"
+                  className={({ isActive }) =>
+                    isActive
+                      ? "flex items-center p-2 bg-yellow-500 text-white rounded-lg transition"
+                      : "flex items-center p-2 hover:bg-yellow-300 rounded-lg transition"
+                  }
+                  onClick={handleLinkClick}
+                >
+                  <FaList className="text-xl mr-3" />
+                  Manage Items
+                </NavLink>
+              </li>
+             
+              <li>
+                <NavLink
+                  to="/dashboard/allUsers"
+                  className={({ isActive }) =>
+                    isActive
+                      ? "flex items-center p-2 bg-yellow-500 text-white rounded-lg transition"
+                      : "flex items-center p-2 hover:bg-yellow-300 rounded-lg transition"
+                  }
+                  onClick={handleLinkClick}
+                >
+                  <FaUsers className="text-xl mr-3" />
+                  All Users
+                </NavLink>
+              </li>
             </>
-          }
+          ) : (
+            <>
+              {/* Not Admin */}
+              <li>
+                <NavLink
+                  to="/dashboard/UserHome"
+                  className={({ isActive }) =>
+                    isActive
+                      ? "flex items-center p-2 bg-yellow-500 text-white rounded-lg transition"
+                      : "flex items-center p-2 hover:bg-yellow-300 rounded-lg transition"
+                  }
+                  onClick={handleLinkClick}
+                >
+                  <FaHome className="text-xl mr-3" />
+                  User Home
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/dashboard/cart"
+                  className={({ isActive }) =>
+                    isActive
+                      ? "flex items-center p-2 bg-yellow-500 text-white rounded-lg transition"
+                      : "flex items-center p-2 hover:bg-yellow-300 rounded-lg transition"
+                  }
+                  onClick={handleLinkClick}
+                >
+                  <FaShoppingCart className="text-xl mr-3" />
+                  My Cart ({cart.length})
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/dashboard/paymentHistory"
+                  className={({ isActive }) =>
+                    isActive
+                      ? "flex items-center p-2 bg-yellow-500 text-white rounded-lg transition"
+                      : "flex items-center p-2 hover:bg-yellow-300 rounded-lg transition"
+                  }
+                  onClick={handleLinkClick}
+                >
+                  <FaStripe className="text-xl mr-3" />
+                  Payment History
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/dashboard/addReview"
+                  className={({ isActive }) =>
+                    isActive
+                      ? "flex items-center p-2 bg-yellow-500 text-white rounded-lg transition"
+                      : "flex items-center p-2 hover:bg-yellow-300 rounded-lg transition"
+                  }
+                  onClick={handleLinkClick}
+                >
+                  <FaStar className="text-xl mr-3" />
+                  Add Review
+                </NavLink>
+              </li>
+            </>
+          )}
 
-           {/*Shared Navlinks  */}
-           <div className="divider my-4" />
+          {/* Shared Navlinks */}
+          <div className="divider my-4" />
           <li>
             <NavLink
               to="/"
@@ -204,27 +191,15 @@ const Dashboard = () => {
               Menu
             </NavLink>
           </li>
-          <li>
-            <NavLink
-              to="/contact"
-              className={({ isActive }) =>
-                isActive
-                  ? "flex items-center p-2 bg-yellow-500 text-white rounded-lg transition"
-                  : "flex items-center p-2 hover:bg-yellow-300 rounded-lg transition"
-              }
-              onClick={handleLinkClick}
-            >
-              <FaEnvelope className="text-xl mr-3" />
-              Contact
-            </NavLink>
-          </li>
-          
-          
+         
         </ul>
       </div>
 
       {/* Dashboard Content */}
       <div className="flex-grow p-4">
+        
+
+        {/* Outlet for nested routes */}
         <Outlet />
       </div>
     </div>

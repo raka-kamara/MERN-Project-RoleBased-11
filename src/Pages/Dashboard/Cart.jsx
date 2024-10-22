@@ -3,6 +3,8 @@ import useCart from "../../hooks/useCart";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { Link } from "react-router-dom";
+import SectionTitle from "../../components/SectionTitle";
+import { Helmet } from "react-helmet-async";
 
 const Cart = () => {
   const [cart, refetch] = useCart();
@@ -37,15 +39,15 @@ const Cart = () => {
   }
   return (
     <div>
-      <div className="flex-1 p-6 bg-gray-100 rounded-lg">
-        <div className="bg-white shadow-md rounded-lg p-6">
-          <h2 className="text-2xl font-bold text-gray-800 mb-4">
-            Welcome to your Dashboard
-          </h2>
-          <p className="text-gray-600">
-            Manage your orders, and reviews seamlessly.
-          </p>
-        </div>
+      <Helmet>
+        <title>Chef's Place | Cart</title>
+      </Helmet>
+        <SectionTitle
+        heading="Your Cart"
+        subHeading="Check your cart Information"
+     />
+      <div className="flex-1 p-6 bg-gray-100 rounded-lg mt-10">
+       
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
           <div className="bg-yellow-500 p-4 rounded-lg shadow-md text-white text-center">
             <h3 className="text-lg font-semibold">Items in Cart</h3>

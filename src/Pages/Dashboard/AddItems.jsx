@@ -37,7 +37,7 @@ const AddItems = () => {
         // show success popup
         reset();
         Swal.fire({
-          position: "top-end",
+          position: "center",
           icon: "success",
           title: `${data.name} is added to the menu.`,
           showConfirmButton: false,
@@ -51,7 +51,7 @@ const AddItems = () => {
   return (
     <div className="min-h-screen bg-slate-300 py-12">
       <Helmet>
-        <title>Chef's Place | Add an Item</title>
+        <title>Chef's Place | Add Items</title>
       </Helmet>
       <SectionTitle
         heading="Add a New Recipe"
@@ -93,7 +93,7 @@ const AddItems = () => {
                   <option disabled value="default">
                     Select a category
                   </option>
-                  <option value="salad">Main</option>
+                  <option value="main">Main</option>
                   <option value="salad">Salad</option>
                   <option value="pizza">Pizza</option>
                   <option value="soup">Soup</option>

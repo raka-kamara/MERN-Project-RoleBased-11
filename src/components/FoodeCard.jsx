@@ -2,6 +2,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../hooks/useAxiosSecure";
+import useCart from "../hooks/useCart";
 
 const FoodeCard = ({ item }) => {
   const { name, image, price, recipe, _id } = item;
@@ -9,6 +10,7 @@ const FoodeCard = ({ item }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const axiosSecure = useAxiosSecure();
+  const [, refetch] = useCart();
 
   const handleAddToCart = (food) => {
     if (user && user.email) {

@@ -3,23 +3,35 @@ import { motion, AnimatePresence } from "framer-motion"; // Import framer-motion
 import { Rating } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
 import SectionTitle from "../../components/SectionTitle";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
+import { useQuery } from "@tanstack/react-query";
 
 const Testimonials = () => {
-  const [reviews, setReviews] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const axiosPublic = useAxiosPublic();
 
-  useEffect(() => {
-    fetch('reviews.json')
-      .then((res) => res.json())
-      .then((data) => setReviews(data));
-  }, []);
+  // Fetch reviews data using React Query
+  const { data: reviews = [], isLoading } = useQuery({
+    queryKey: ["reviews"], 
+    queryFn: async () => {
+      const res = await axiosPublic.get("/reviews");
+      return res.data;  
+    },
+  });
 
+  // Set interval to cycle through reviews
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % reviews.length);
-    }, 5000); // Change testimonial every 5 seconds
-    return () => clearInterval(interval);
+    if (reviews.length > 0) {
+      const interval = setInterval(() => {
+        setCurrentIndex((prevIndex) => (prevIndex + 1) % reviews.length);
+      }, 5000); // Change testimonial every 5 seconds
+      return () => clearInterval(interval);
+    }
   }, [reviews]);
+
+  if (isLoading) {
+    return <div>Loading reviews...</div>; // Show loading message while data is being fetched
+  }
 
   return (
     <section className="my-20">
@@ -30,7 +42,7 @@ const Testimonials = () => {
           <AnimatePresence>
             {reviews.length > 0 && (
               <motion.div
-                key={reviews[currentIndex]._id}
+                key={currentIndex} // Using currentIndex as the key
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -50 }}

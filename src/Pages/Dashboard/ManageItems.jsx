@@ -28,7 +28,7 @@ const ManageItems = () => {
         if (res.data.deletedCount > 0) {
           refetch();
           Swal.fire({
-            position: "top-end",
+            position: "center",
             icon: "success",
             title: `${item.name} has been deleted`,
             showConfirmButton: false,

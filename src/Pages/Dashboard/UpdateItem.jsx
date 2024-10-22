@@ -39,7 +39,7 @@ const UpdateItem = () => {
                 // show success popup
                 // reset();
                 Swal.fire({
-                    position: "top-end",
+                    position: "center",
                     icon: "success",
                     title: `${data.name} is updated to the menu.`,
                     showConfirmButton: false,
@@ -76,7 +76,7 @@ const UpdateItem = () => {
                         <select defaultValue={category} {...register('category', { required: true })}
                             className="select select-bordered w-full">
                             <option disabled value="default">Select a category</option>
-                            <option value="salad">Main</option>
+                            <option value="main">Main</option>
                             <option value="salad">Salad</option>
                             <option value="pizza">Pizza</option>
                             <option value="soup">Soup</option>

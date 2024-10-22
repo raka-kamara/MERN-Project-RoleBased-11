@@ -14,6 +14,10 @@ import AdminRoute from "./AdminRoute";
 import ManageItems from "../Pages/Dashboard/ManageItems";
 import UpdateItem from "../Pages/Dashboard/UpdateItem";
 import Payment from "../Pages/Dashboard/Payment";
+import PaymentHistory from "../Pages/Dashboard/PaymentHistory";
+import AdminHome from "../Pages/Dashboard/AdminHome";
+import UserHome from "../Pages/Dashboard/UserHome";
+import AddReview from "../Pages/Dashboard/AddReview";
 
 export const router = createBrowserRouter([
     {
@@ -48,6 +52,10 @@ export const router = createBrowserRouter([
       children:[
         // normal user routes
         {
+          path: 'UserHome',
+          element: <UserHome/>
+        },
+        {
           path: 'cart',
           element: <Cart/>
         },
@@ -55,11 +63,23 @@ export const router = createBrowserRouter([
           path: 'payment',
           element: <Payment/>
         },
+        {
+          path: 'paymentHistory',
+          element: <PaymentHistory/>
+        },
+        {
+          path: 'addReview',
+          element: <AddReview/>
+        },
         
         //Admin only routes
         {
           path: 'allUsers',
           element: <AdminRoute><AllUsers/></AdminRoute>
+        }, 
+        {
+          path: 'AdminHome',
+          element: <AdminRoute><AdminHome/></AdminRoute>
         }, 
         {
           path: 'addItems',
@@ -72,7 +92,7 @@ export const router = createBrowserRouter([
         {
           path: 'updateItem/:id',
           element: <AdminRoute><UpdateItem/></AdminRoute>,
-          loader: ({params}) => fetch(`http://localhost:5000/menu/${params.id}`)
+          loader: ({params}) => fetch(`https://chef-s-place-server.vercel.app/menu/${params.id}`)
         }, 
       ]
     }
